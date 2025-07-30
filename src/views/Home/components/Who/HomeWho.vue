@@ -1,6 +1,6 @@
 <template>
   <div class="who_card flex justify-center item-center flex-col pb-[50px] pt-[30px] md:pt-[50px]">
-    <h6 class="who_title">Who We Are</h6>
+    <h6 class="text-center who_title">Who We Are</h6>
     <h2 class="who_sub_title">
       We will help your brand reach the right people with creative content on the most suitable
       platform at the perfect time.
@@ -35,7 +35,6 @@
 }
 .who_sub_title {
   font-size: 30px;
-  color: black;
   margin-bottom: 10px;
   font-weight: 700;
   letter-spacing: -0.27px;

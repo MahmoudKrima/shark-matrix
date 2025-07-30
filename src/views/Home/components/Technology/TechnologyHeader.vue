@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="flex justify-center items-center flex-col mt-[60px] mb-[20px] text-center">
+    <div class="flex justify-center items-center flex-col mt-[60px] mb-[10px] text-center">
       <h6 class="tech_title">TECHNOLOGY STACK</h6>
       <h2 class="tech_sub_title">Technologies we work with</h2>
     </div>

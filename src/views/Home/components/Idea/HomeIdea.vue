@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div
-      class="flex flex-col md:flex-row items-center justify-center pt-[30px] sm:pt-[50px] md:pt-[110px] md:pb-[70px]"
+      class="flex flex-col md:flex-row items-center justify-center pt-[30px] sm:pt-[50px] md:pt-[80px] md:pb-[70px]"
     >
       <div class="px-[20px] md:w-1/3 button_wraaper">
         <div class="mb-3">

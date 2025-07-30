@@ -22,7 +22,7 @@
                 class="text-center min-w-[100px] max-w-[200px] flex-grow"
               >
                 <img :src="section.img" alt="icon" class="w-[60px] object-fit mx-auto mb-2" />
-                <p class="m-0">{{ section.text }}</p>
+                <p class="m-0 nav_p">{{ section.text }}</p>
               </div>
             </div>
           </TabPanel>
@@ -108,11 +108,15 @@ const tabs = ref([
 </script>
 
 <style scoped>
-.p-tab {
+.p-tab,
+.nav_p {
   color: black;
 }
 .p-tab-active {
-  color: black;
+  background-color: white;
   border-bottom: 3px solid #2e91cf !important;
+}
+.p-tabpanels {
+  background-color: white;
 }
 </style>
