@@ -2,24 +2,27 @@
   <div
     class="grid md:grid-cols-2 grid-cols-1 gap-4 mt-8 pt-[15px] md:pt-[50px] place-items-center pb-[20px] md:pb-[45px]"
   >
-    <div v-for="item in 4" :key="item" class="who_card mb-[40px]">
-      <img class="who_card_img" src="../../icons/portfoliomockup2-1.png" alt="" />
+    <div v-for="item in data" :key="item.id" class="who_card mb-[40px]">
+      <img class="who_card_img" :src="item.image" alt="" />
       <div class="card_description">
-        <span class="who_span">Web Development </span>
+        <span class="who_span">{{ item.category }} </span>
         <div class="flex justify-between">
           <div>
-            <h5 class="who_card_title">Asset Integrity Engineering</h5>
-            <p>AIE is a leading provider of asset integrity services</p>
+            <h5 class="who_card_title">{{ item.title }}</h5>
+            <p>{{ item.sub_title }}</p>
           </div>
-          <div class="flex justify-center item-center">
-            <img src="../../icons/assetintegrity-2.png" alt="" />
+          <div class="flex-center overflow-hidden max-w-[120px] max-h-[80px]">
+            <img :src="item.logo" alt="" class="max-w-full max-h-full object-contain" />
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
-<script setup></script>
+<script setup>
+import { inject } from 'vue'
+const data = inject('whoWorks')
+</script>
 <style scoped>
 .who_card {
   position: relative;

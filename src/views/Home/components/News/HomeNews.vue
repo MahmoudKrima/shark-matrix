@@ -4,7 +4,7 @@ import NewsInput from './NewsInput.vue'
 <template>
   <div class="news_background py-[50px]">
     <div class="container">
-      <div class="flex flex-col items-center justify-center text-center w-full">
+      <div class="flex-center flex-col text-center w-full">
         <h4 class="news_title mx-[25px] mb-7">We’re just One mail away</h4>
         <p class="news_p max-w-[700px]">
           Get a Free 30-Minute Consultation with Our Experienced Technical Team for Your Business!

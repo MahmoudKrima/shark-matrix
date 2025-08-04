@@ -1,10 +1,10 @@
 <template>
   <div class="flex items-center card">
     <div>
-      <img src="../../assets/img/digital-marketing-SM.png" alt="" class="card_img" />
+      <img :src="image" alt="" class="card_img" />
     </div>
     <div class="card_info">
-      <h5 class="card_title my-[5px]">Digital Marketing</h5>
+      <h5 class="card_title my-[5px]">{{ sub_title }}</h5>
       <a class="mt-4 more_text">
         View in Details
         <i class="pi pi-plus"></i>
@@ -13,7 +13,22 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const props = defineProps({
+  sub_title: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  image: {
+    type: String,
+    required: true,
+  },
+})
+</script>
 
 <style scoped>
 .card {

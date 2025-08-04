@@ -2,7 +2,7 @@
   <div class="header-background footer">
     <div class="container pt-[50px] pb-[20px]">
       <div
-        class="px-[15px] flex flex-col md:flex-row justify-center md:justify-between items-center md:items-start gap-6"
+        class="px-[15px] flex-center flex-col md:flex-row md:justify-between md:items-start gap-6"
       >
         <div class="w-1/3">
           <img src="../../assets/img/Main-logo.png" alt="Main logo" />

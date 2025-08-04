@@ -3,9 +3,7 @@ import HomeIndustriesCard from './HomeIndustriesCard.vue'
 </script>
 <template>
   <div class="py-[50px]">
-    <div
-      class="container flex items-center md:items-start justify-center md:flex-row gap-2 flex-col p-[20px]"
-    >
+    <div class="container flex-center md:items-start md:flex-row gap-2 flex-col p-[20px]">
       <div class="m-0 md:w-1/3">
         <div class="mb-3">
           <h6 class="industries_title">Industries We Serve</h6>

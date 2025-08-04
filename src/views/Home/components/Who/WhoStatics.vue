@@ -1,20 +1,17 @@
 <template>
   <div class="flex justify-evenly item-center">
-    <div class="static_card md:w-1/3">
-      <h5 class="static_title">5+</h5>
-      <p class="static_paragraph">Years in Business</p>
-    </div>
-    <div class="static_card md:w-1/3">
-      <h5 class="static_title">250+</h5>
-      <p class="static_paragraph">Projects Completed</p>
-    </div>
-    <div class="static_card md:w-1/3">
-      <h5 class="static_title">20+</h5>
-      <p class="static_paragraph">Industries Partner</p>
+    <div v-for="item in data" :key="item.id" class="static_card md:w-1/3">
+      <h5 class="static_title">{{ item.number }}</h5>
+      <p class="static_paragraph">{{ item.title }}</p>
     </div>
   </div>
 </template>
-<script setup></script>
+<script setup>
+const props = defineProps({
+  data: Array,
+  required: true,
+})
+</script>
 <style scoped>
 .static_card {
   border: 1px solid #2e91cf !important;

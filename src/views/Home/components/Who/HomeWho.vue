@@ -1,25 +1,24 @@
 <template>
-  <div class="who_card flex justify-center item-center flex-col pb-[50px] pt-[30px] md:pt-[50px]">
-    <h6 class="text-center who_title">Who We Are</h6>
+  <div class="who_card flex-center flex-col pb-[50px] pt-[30px] md:pt-[50px]">
+    <h6 class="text-center who_title">{{ data.title }}</h6>
     <h2 class="who_sub_title">
-      We will help your brand reach the right people with creative content on the most suitable
-      platform at the perfect time.
+      {{ data.sub_title }}
     </h2>
     <p class="who_paragraph">
-      Shark Matrix is digital marketing agency & web development company in Dubai who can convert
-      your idea into reality. We’re based in Dubai and help businesses to connect with a global
-      audience. With our unique web design, web development, app development & digital marketing
-      services, we help our clients achieve new heights by accumulating powerful leads and sales.
-      We’re also spreading our wings through the Internet of Things (IoT) and cloud-based services.
-      Call +971 4 507 2057 to have a coffee and discuss your idea.
+      {{ data.description }}
     </p>
-    <div class="flex justify-center item-center flex-row gap-2 md:gap-8 mt-3">
+    <div class="flex-center flex-row gap-2 md:gap-8 mt-3">
       <s-button label="Get A Free Quote" style-class="idea_btn" />
       <s-button label="About Us" style-class="who_btn" />
     </div>
   </div>
 </template>
-<script setup></script>
+<script setup>
+const props = defineProps({
+  data: Object,
+  required: true,
+})
+</script>
 <style scoped>
 .who_card {
   max-width: 75%;

@@ -2,21 +2,29 @@
   <div
     class="flex items-center md:flex-row flex-col justify-evenly mt-[20px] md:mt-[30px] md:mb-[20px] px-[10px] md:w-2/3 md:ml-[80px]"
   >
-    <div class="flex flex-col items-center md:items-start w-full md:w-1/3">
-      <Avatar label="200%" class="avatar mb-2" size="xlarge" shape="circle" />
-      <p class="avatar_paragraph">Increase in Traffic</p>
-    </div>
-    <div class="flex flex-col items-center md:items-start w-full md:w-1/3">
-      <Avatar label="120%" class="avatar mb-2" size="xlarge" shape="circle" />
-      <p class="avatar_paragraph">Increase in Inquiry</p>
-    </div>
-    <div class="flex flex-col items-center md:items-start w-full md:w-1/3">
-      <Avatar label="25+" class="special_avatar mb-2" size="xlarge" shape="circle" />
-      <p class="avatar_paragraph">Page # 1 Result on Google UAE</p>
+    <div
+      v-for="(item, index) in items"
+      :key="item.id"
+      class="flex flex-col items-center md:items-start w-full md:w-1/3"
+    >
+      <Avatar
+        :label="item.number"
+        :class="['mb-2', index === items.length - 1 ? 'special_avatar' : 'avatar']"
+        size="xlarge"
+        shape="circle"
+      />
+      <p class="avatar_paragraph">{{ item.title }}</p>
     </div>
   </div>
 </template>
-<script setup></script>
+<script setup>
+const props = defineProps({
+  items: {
+    type: Array,
+    required: true,
+  },
+})
+</script>
 <style scoped>
 .avatar {
   position: relative;

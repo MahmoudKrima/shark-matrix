@@ -2,6 +2,7 @@
 @import "tailwindcss";
 @import "tailwindcss-primeui";
 
+
 @layer base {
     html {
         font-family: 'Sora', sans-serif;
@@ -13,7 +14,6 @@
         padding: 0;
         word-break: break-word;
         -webkit-font-smoothing: antialiased;
-
     }
 
     @media (prefers-color-scheme: dark) {
@@ -23,15 +23,13 @@
         }
     }
 
-    *,
-    *::before,
-    *::after {
-        box-sizing: inherit;
-        -webkit-font-smoothing: antialiased;
-        word-break: break-word;
-        word-wrap: break-word;
+    img {
+        @apply max-w-full object-contain;
     }
 
+}
+
+@layer utilities {
     .header-background {
         background-image: url('../assets/img/header-bg.jpg');
         background-size: cover;
@@ -39,13 +37,11 @@
     }
 }
 
+
 @layer components {
     .container {
-        margin: auto;
-        max-width: 1140px !important;
+        @apply mx-auto !max-w-6xl;
     }
-
-
 
     h2,
     h3,
@@ -53,5 +49,12 @@
     h6 {
         font-weight: 700;
     }
+}
 
+@utility flex-center {
+    @apply flex items-center justify-center;
+}
+
+@utility section-title {
+    @apply font-extrabold text-3xl;
 }

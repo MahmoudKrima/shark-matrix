@@ -14,7 +14,7 @@
         </TabList>
         <TabPanels>
           <TabPanel v-for="tab in tabs" :key="tab.value" :value="tab.value">
-            <div class="flex flex-wrap justify-center items-center m-4 w-full gap-4">
+            <div class="flex-center flex-wrap m-4 w-full gap-4">
               <div
                 v-for="(section, index) in tab.contents"
                 :key="index"

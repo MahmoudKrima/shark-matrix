@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-center max-w-[800px] w-full mt-5">
+  <div class="flex-center max-w-[800px] w-full mt-5">
     <div class="w-[320px] md:w-[500px]">
       <InputText
         type="text"
@@ -15,8 +15,6 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
-
 const props = defineProps({
   label: {
     type: String,
