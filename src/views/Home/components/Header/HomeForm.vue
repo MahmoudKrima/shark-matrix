@@ -1,9 +1,9 @@
 <script setup>
-import { ref } from 'vue'
-const website = ref('')
-const name = ref('')
-const email = ref('')
-const phone = ref('')
+import { ref, computed } from 'vue'
+import { useVuelidate } from '@vuelidate/core'
+import { required, email, url } from '@vuelidate/validators'
+import { useHeadersStore } from '@/stores/headers.store'
+
 const props = defineProps({
   headerTitle: {
     type: String,
@@ -11,16 +11,33 @@ const props = defineProps({
   },
 })
 
-const emit = defineEmits(['submit-form'])
+const form = ref({
+  web_site: '',
+  name: '',
+  email: '',
+  phone: '',
+})
 
-const submitForm = () => {
-  const formData = {
-    web_site: website.value,
-    name: name.value,
-    email: email.value,
-    phone: phone.value,
-  }
-  emit('submit-form', formData)
+const rules = {
+  web_site: { required, url },
+  name: { required },
+  email: { required, email },
+  phone: { required },
+}
+
+const v$ = useVuelidate(rules, form)
+const headersStore = useHeadersStore()
+const uiFlags = computed(() => headersStore.uiFlags)
+const sendQuote = async () => {
+  v$.value.$touch()
+  if (v$.value.$error || uiFlags.value.creating) return
+  await headersStore.crateForm(form.value).then(() => {
+    form.value.web_site = ''
+    form.value.name = ''
+    form.value.email = ''
+    form.value.phone = ''
+    v$.value.$reset()
+  })
 }
 </script>
 
@@ -33,14 +50,52 @@ const submitForm = () => {
       <div class="grid md:grid-cols-2 grid-cols-1 gap-4 mt-8">
         <s-input
           class="md:col-span-2"
-          placeholder="Enter Your Website*"
-          v-model="website"
+          placeholder="Enter Your Website"
+          v-model="form.web_site"
+          :error="v$.web_site.$error"
+          :errorMessage="
+            (v$.web_site.required.$invalid && 'This Filed Is Required') ||
+            (v$.web_site.url.$invalid && 'This Filed Must Be Valid URL')
+          "
+          @blur="v$.web_site.$touch()"
           required
         />
-        <s-input placeholder="Enter Your Name*" v-model="name" required />
-        <s-input placeholder="Enter Your Email*" v-model="email" type="email" required />
-        <s-input placeholder="Enter Your Phone*" v-model="phone" type="tel" required />
-        <s-button style-class="home_btn" label="Get A Quote" type="submit" />
+        <s-input
+          placeholder="Enter Your Name"
+          v-model="form.name"
+          :error="v$.name.$error"
+          :errorMessage="'This Filed Is Required'"
+          @blur="v$.name.$touch()"
+          required
+        />
+        <s-input
+          placeholder="Enter Your Email"
+          v-model="form.email"
+          type="email"
+          :error="v$.email.$error"
+          :errorMessage="
+            (v$.email.required.$invalid && 'This Filed Is Required') ||
+            (v$.email.email.$invalid && 'This Filed Must Be Valid Email')
+          "
+          @blur="v$.email.$touch()"
+          required
+        />
+        <s-input
+          placeholder="Enter Your Phone"
+          v-model="form.phone"
+          type="tel"
+          :error="v$.phone.$error"
+          :errorMessage="'This Filed Is Required'"
+          @blur="v$.phone.$touch()"
+          required
+        />
+        <s-button
+          style-class="home_btn"
+          label="Get A Quote"
+          :loading="uiFlags.creating"
+          :disabled="v$.$error"
+          @click="sendQuote"
+        />
       </div>
     </form>
   </div>

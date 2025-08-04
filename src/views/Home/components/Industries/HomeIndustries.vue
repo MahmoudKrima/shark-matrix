@@ -1,25 +1,31 @@
 <script setup>
 import HomeIndustriesCard from './HomeIndustriesCard.vue'
+import { useIndustryStore } from '@/stores/industry.store'
+import { onMounted } from 'vue'
+
+const industryStore = useIndustryStore()
+onMounted(() => {
+  industryStore.getIndustryList()
+})
 </script>
 <template>
   <div class="py-[50px]">
     <div class="container flex-center md:items-start md:flex-row gap-2 flex-col p-[20px]">
       <div class="m-0 md:w-1/3">
         <div class="mb-3">
-          <h6 class="industries_title">Industries We Serve</h6>
+          <h6 class="industries_title">{{ industryStore.industryData.title }}</h6>
           <h4 class="industries_sub_title mb-[30px]">
-            Our Work Covers a Wide Range of Domains & Industries
+            {{ industryStore.industryData.sub_title }}
           </h4>
           <div class="mb-3">
             <p class="industries_p">
-              Your Digital Partner We create and implement powerful strategies to increase the
-              visibility & growth of your business.
+              {{ industryStore.industryData.description }}
             </p>
           </div>
         </div>
       </div>
       <div class="m-0 md:w-2/3">
-        <home-industries-card />
+        <home-industries-card :data="industryStore.industryData.items" />
       </div>
     </div>
   </div>

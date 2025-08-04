@@ -29,13 +29,13 @@ export const useHeadersStore = defineStore('header', () => {
 
   const crateForm = async (data) => {
     try {
-      uiFlags.value.updating = true
-      await headerService.form('store-quote', data)
-      getHeaderList()
+      uiFlags.value.creating = true
+      const response = await headerService.form('store-quote', data)
+      return response
     } catch (error) {
       return error
     } finally {
-      uiFlags.value.updating = false
+      uiFlags.value.creating = false
     }
   }
 

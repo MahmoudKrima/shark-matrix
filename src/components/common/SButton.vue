@@ -1,11 +1,10 @@
 <template>
-  <Button :label="label" :class="styleClass">
+  <Button :label="label" :class="styleClass" :loading="loading" :disabled="loading || disabled">
     <slot />
   </Button>
 </template>
 
 <script setup>
-
 const props = defineProps({
   label: {
     type: String,
@@ -16,6 +15,8 @@ const props = defineProps({
     required: false,
     default: '',
   },
+  loading: { type: Boolean, default: false },
+  disabled: { type: Boolean, default: false },
 })
 </script>
 

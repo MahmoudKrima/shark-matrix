@@ -1,19 +1,23 @@
 <template>
   <div class="grid grid-col-1 md:grid-cols-3 gap-4 items-center">
-    <div v-for="item in 9" :key="item" class="p-[25px] flex flex-col industries_card">
+    <div v-for="item in data" :key="item.id" class="p-[25px] flex flex-col industries_card">
       <div class="item-start">
-        <img class="industries_img mb-3" src="../../icons/hero.png" alt="" />
+        <img class="industries_img mb-3" :src="item.image" alt="" />
       </div>
-      <h5 class="industries_card_title mb-1">Agritech & Supply Chain</h5>
+      <h5 class="industries_card_title mb-1">{{ item.title }}</h5>
       <p class="industries_card_p">
-        Revolutionizing Agritech & Supply Chain with cutting-edge development & marketing
-        strategies.
+        {{ item.sub_title }}
       </p>
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const props = defineProps({
+  data: Array,
+  required: true,
+})
+</script>
 
 <style scoped>
 .industries_card {

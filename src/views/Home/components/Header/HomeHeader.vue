@@ -6,7 +6,6 @@
           <div>
             <home-form
               :header-title="headersStore.headerData?.title || ''"
-              @submit-form="handleFormSubmit"
             />
           </div>
         </div>
@@ -75,20 +74,6 @@ onBeforeUnmount(() => {
   clearSlideshow()
 })
 
-const visible = ref(false)
-
-const handleFormSubmit = (formData) => {
-  createForm(formData)
-}
-
-const createForm = async (formData) => {
-  try {
-    await headersStore.crateForm(formData)
-    visible.value = false
-  } catch (error) {
-    console.error('Form submission failed:', error)
-  }
-}
 </script>
 
 <style scoped>
