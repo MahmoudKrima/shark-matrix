@@ -1,13 +1,18 @@
 <template>
   <div class="container w-full md:w-[45%] flex flex-start flex-col header-background p-[40px]">
     <span class="contact_span">Contact Us</span>
-    <h2 class="contact_title">We’d Love to hear from you</h2>
-    <p class="contact_p mb-[40px]">We have an office and team in DUBAI and AHMEDABAD</p>
-    <img src="../../icons/map-new-2.png" class="w-full" alt="" />
+    <h2 class="contact_title">{{ data.title }}</h2>
+    <p class="contact_p mb-[40px]">{{ data.sub_title }}</p>
+    <img :src="data.image" class="w-full" alt="" />
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const props = defineProps({
+  data: Object,
+  required: true,
+})
+</script>
 
 <style scoped>
 .contact_span,
